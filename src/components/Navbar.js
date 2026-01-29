@@ -12,10 +12,18 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
-      <Link className="navbar-brand" to="/">MyShop</Link>
+      <Link className="navbar-brand" to="/">
+        <img 
+          src={`${process.env.PUBLIC_URL}/icona.png`} 
+          alt="MyShop Logo" 
+          style={{ height: "40px" }} 
+        />
+      </Link>
 
       <div>
         <Link className="btn btn-link text-white" to="/">Home</Link>
+        {/* Collegamento alla pagina ChiSiamo */}
+        <Link className="btn btn-link text-white" to="/chisiamo">Chi Siamo</Link>
         <Link className="btn btn-link text-white" to="/prodotti">Prodotti</Link>
 
         {isLogged && (
