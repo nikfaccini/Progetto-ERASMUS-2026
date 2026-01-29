@@ -22,7 +22,6 @@ const Navbar = () => {
 
       <div>
         <Link className="btn btn-link text-white" to="/">Home</Link>
-        {/* Collegamento alla pagina ChiSiamo */}
         <Link className="btn btn-link text-white" to="/chisiamo">Chi Siamo</Link>
         <Link className="btn btn-link text-white" to="/prodotti">Prodotti</Link>
 

@@ -26,7 +26,6 @@ const Registrazione = () => {
       password,
     };
 
-    // 🔐 Salvataggio localStorage
     localStorage.setItem("utenteRegistrato", JSON.stringify(utente));
 
     console.log("Utente salvato:", utente);
