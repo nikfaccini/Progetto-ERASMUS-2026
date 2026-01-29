@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Registrazione from "./pages/Registrazione";
+import Prodotti from "./pages/Prodotti";
+import Carrello from "./pages/Carrello";
+import Ordini from "./pages/Ordini";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registrazione" element={<Registrazione />} />
+        <Route path="/prodotti" element={<Prodotti />} />
+
+        <Route
+          path="/carrello"
+          element={
+            <ProtectedRoute>
+              <Carrello />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/ordini"
+          element={
+            <ProtectedRoute>
+              <Ordini />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
