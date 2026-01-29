@@ -1,0 +1,97 @@
+{
+  "catalogo": {
+    "valuta": "EUR",
+    "prodotti": [
+      {
+        "id": 1,
+        "nome": "Pallet in legno",
+        "categoria": "Pallet",
+        "descrizione": "Pallet in legno resistenti, ideali per trasporto e stoccaggio merci.",
+        "prezzo": 12.50,
+        "dimensioni_cm": "120x80x14",
+        "peso_kg": 25,
+        "materiale": "Legno",
+        "disponibilita": 200,
+        "immagini": [
+          "https://pixabay.com/it/images/search/pallet%20di%20legno/",
+          "https://www.shopify.com/stock-photos/photos/pallet-stacks"
+        ]
+      },
+      {
+        "id": 2,
+        "nome": "Pallet in legno pressato",
+        "categoria": "Pallet",
+        "descrizione": "Pallet leggeri ed economici, adatti alle spedizioni.",
+        "prezzo": 9.90,
+        "dimensioni_cm": "120x80x13",
+        "peso_kg": 15,
+        "materiale": "Legno pressato riciclato",
+        "disponibilita": 300,
+        "immagini": [
+          "https://www.shopify.com/stock-photos/photos/pallet-stacks",
+          "https://pixabay.com/it/images/search/pallet%20di%20legno/"
+        ]
+      },
+      {
+        "id": 3,
+        "nome": "Pallet in plastica",
+        "categoria": "Pallet",
+        "descrizione": "Pallet in plastica igienici e facili da pulire.",
+        "prezzo": 24.00,
+        "dimensioni_cm": "120x80x15",
+        "peso_kg": 18,
+        "materiale": "Plastica",
+        "disponibilita": 150,
+        "immagini": [
+          "https://example.com/immagini/pallet_plastica_nero.jpg",
+          "https://example.com/immagini/pallet_plastica_blu.jpg"
+        ]
+      },
+      {
+        "id": 4,
+        "nome": "Paretali in legno",
+        "categoria": "Accessori pallet",
+        "descrizione": "Strutture in legno per proteggere la merce sui pallet.",
+        "prezzo": 18.00,
+        "dimensioni_cm": "120x80x60",
+        "peso_kg": 10,
+        "materiale": "Legno",
+        "disponibilita": 100,
+        "immagini": [
+          "https://pixabay.com/it/images/search/pallet%20di%20legno/",
+          "https://www.shopify.com/stock-photos/photos/pallet-stacks"
+        ]
+      },
+      {
+        "id": 5,
+        "nome": "Plance di protezione",
+        "categoria": "Protezione merci",
+        "descrizione": "Plance in legno per separare e proteggere i carichi.",
+        "prezzo": 6.50,
+        "dimensioni_cm": "120x80",
+        "peso_kg": 5,
+        "materiale": "Legno",
+        "disponibilita": 400,
+        "immagini": [
+          "https://pixabay.com/it/images/search/pallet%20di%20legno/",
+          "https://www.shopify.com/stock-photos/photos/pallet-stacks"
+        ]
+      },
+      {
+        "id": 6,
+        "nome": "Display in pallet",
+        "categoria": "Espositori",
+        "descrizione": "Display realizzati con pallet per l’esposizione dei prodotti.",
+        "prezzo": 45.00,
+        "dimensioni_cm": "120x80x180",
+        "peso_kg": 30,
+        "materiale": "Legno",
+        "disponibilita": 50,
+        "immagini": [
+          "https://pixabay.com/it/images/search/pallet%20di%20legno/",
+          "https://www.shopify.com/stock-photos/photos/pallet-stacks"
+        ]
+      }
+    ]
+  }
+}
