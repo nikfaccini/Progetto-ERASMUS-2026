@@ -1,10 +1,22 @@
 .App {
   text-align: center;
+  background: rgba(255, 255, 255, 0.1); /* sfondo semi-trasparente */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,18 +26,28 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background: rgba(255, 255, 255, 0.15); /* glass effect */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px 20px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #FFD700; /* link brillante */
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.App-link:hover {
+  transform: translateY(-2px);
+  color: #F8B195;
 }
 
 @keyframes App-logo-spin {

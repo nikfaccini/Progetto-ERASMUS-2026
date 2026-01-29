@@ -3,19 +3,27 @@
   margin: 0 auto;
   padding: 30px 20px;
   font-family: "Inter", sans-serif;
+  background: rgba(255, 255, 255, 0.15); /* glass effect */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  color: #fff;
 }
 
 h1 {
   font-size: 36px;
   font-weight: 700;
-  color: #764ba2;
+  color: #FFD700; /* titolo brillante */
   margin-bottom: 16px;
+  text-align: center;
 }
 
 p {
   font-size: 18px;
-  color: #555;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .banner {
@@ -24,12 +32,15 @@ p {
   background: url('https://source.unsplash.com/1200x300/?shopping,ecommerce') center/cover no-repeat;
   border-radius: 12px;
   margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.3); /* bordo leggero per armonia con glass */
 }
 
 .quick-links {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quick-links a {
@@ -37,16 +48,17 @@ p {
   min-width: 150px;
   padding: 12px 16px;
   text-align: center;
-  background-color: #764ba2;
+  background: linear-gradient(135deg, #F67280, #C06C84); /* gradient colorato */
   color: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .quick-links a:hover {
-  background-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(240, 180, 180, 0.3);
 }
 
 @media (max-width: 768px) {

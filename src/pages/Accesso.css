@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #34495E, #2C3E50);
+  background: linear-gradient(135deg, #6C5B7B, #355C7D, #F67280); /* sfondo colorato armonico */
 }
 
 .login-container {
@@ -18,11 +18,12 @@
   max-width: 420px;
   padding: 40px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.2); /* semi-trasparente per glass effect */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* bordo leggero per contrasto */
 }
 
 .login-container h1 {
@@ -57,6 +58,12 @@
   border: none;
   outline: none;
   font-size: 15px;
+  background: rgba(255, 255, 255, 0.15); /* input semi-trasparente */
+  color: #fff;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .form-group input:focus {
@@ -69,8 +76,8 @@
   padding: 14px;
   border-radius: 14px;
   border: none;
-  background: #ffffff;
-  color: #2C3E50;
+  background: linear-gradient(135deg, #F8B195, #C06C84); /* pulsante con gradient armonioso */
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -79,7 +86,7 @@
 
 .login-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(240, 180, 180, 0.3);
 }
 
 .extra-links {
@@ -89,7 +96,7 @@
 }
 
 .extra-links a {
-  color: #ffffff;
+  color: #FFD700; /* giallo brillante per visibilità */
   text-decoration: none;
   font-weight: 500;
   opacity: 0.9;

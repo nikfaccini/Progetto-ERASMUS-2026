@@ -2,13 +2,21 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
+  font-family: "Inter", sans-serif;
+  background: rgba(255, 255, 255, 0.15); /* glass effect */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  color: #fff;
 }
 
 h1 {
   font-family: "Inter", sans-serif;
   font-weight: 700;
   margin-bottom: 20px;
-  color: #333;
+  color: #FFD700; /* titolo brillante */
+  text-align: center;
 }
 
 .order-item {
@@ -17,13 +25,15 @@ h1 {
   align-items: center;
   padding: 12px;
   margin-bottom: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f8f8f8;
+  border-radius: 12px;
+  background: rgba(248, 177, 149, 0.2); /* box colorato semi-trasparente */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .order-item p {
   margin: 0;
   font-size: 16px;
   font-weight: 500;
+  color: #fff; /* testo leggibile sul box */
 }
