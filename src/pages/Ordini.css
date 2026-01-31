@@ -1,0 +1,190 @@
+.ordini-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.ordini-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.nessun-ordine {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.nessun-ordine p {
+  font-size: 24px;
+  color: #666;
+}
+
+.ordini-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ordine-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.ordine-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.ordine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.ordine-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 22px;
+}
+
+.ordine-data {
+  margin: 5px 0 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.ordine-badge {
+  background-color: #667eea;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.ordine-prodotti {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.prodotto-ordine {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #4caf50;
+}
+
+.prodotto-emoji {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.prodotto-dettagli {
+  flex: 1;
+}
+
+.prodotto-nome {
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+}
+
+.prodotto-categoria {
+  display: inline-block;
+  background-color: #667eea;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin: 5px 0;
+}
+
+.prodotto-info {
+  margin: 8px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.prodotto-info strong {
+  color: #4caf50;
+  font-size: 16px;
+}
+
+.prodotto-specifiche {
+  margin: 5px 0 0 0;
+  color: #999;
+  font-size: 12px;
+}
+
+.ordine-riepilogo {
+  border-top: 2px solid #eee;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ordine-info {
+  color: #666;
+  font-size: 14px;
+}
+
+.ordine-info strong {
+  color: #333;
+}
+
+.ordine-totale {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 22px;
+}
+
+.ordine-totale span:first-child {
+  color: #666;
+}
+
+.totale-prezzo {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ordine-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ordine-badge {
+    align-self: flex-start;
+  }
+
+  .prodotto-ordine {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ordine-riepilogo {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .ordine-totale {
+    font-size: 20px;
+  }
+}

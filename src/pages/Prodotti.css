@@ -1,0 +1,221 @@
+.prodotti-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.prodotti-container h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 36px;
+}
+
+.sottotitolo {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.messaggio-successo {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prodotti-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.prodotto-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.prodotto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.prodotto-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #667eea;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Stile per le immagini vere */
+.prodotto-immagine-foto {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 10px 0 20px 0;
+}
+
+/* Stile per le emoji (fallback) */
+.prodotto-immagine-emoji {
+  font-size: 64px;
+  margin: 20px 0;
+}
+
+.prodotto-card h3 {
+  margin: 15px 0 10px 0;
+  color: #333;
+  font-size: 20px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.descrizione {
+  color: #666;
+  font-size: 14px;
+  margin: 10px 0;
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.prodotto-dettagli {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.prodotto-dettagli p {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.prodotto-dettagli strong {
+  color: #333;
+}
+
+.disponibilita {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.disponibilita-bassa {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.prezzo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4caf50;
+  margin: 15px 0;
+}
+
+.btn-aggiungi,
+.btn-disabilitato {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-aggiungi {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-aggiungi:hover {
+  background-color: #45a049;
+  transform: scale(1.02);
+}
+
+.btn-aggiungi:active {
+  transform: scale(0.98);
+}
+
+.btn-disabilitato {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .prodotti-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .prodotto-card {
+    padding: 15px;
+  }
+
+  .prodotto-immagine-foto {
+    height: 150px;
+  }
+
+  .prodotto-immagine-emoji {
+    font-size: 48px;
+  }
+
+  .prodotto-card h3 {
+    font-size: 18px;
+    min-height: 40px;
+  }
+
+  .descrizione {
+    font-size: 13px;
+    min-height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .prodotti-container h1 {
+    font-size: 28px;
+  }
+
+  .sottotitolo {
+    font-size: 16px;
+  }
+
+  .prodotti-grid {
+    grid-template-columns: 1fr;
+  }
+}

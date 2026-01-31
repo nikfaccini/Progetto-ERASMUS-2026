@@ -1,0 +1,252 @@
+.carrello-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.carrello-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.carrello-vuoto {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.carrello-vuoto p {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.btn-continua {
+  padding: 12px 30px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-continua:hover {
+  background-color: #45a049;
+}
+
+.carrello-lista {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.carrello-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  gap: 20px;
+}
+
+.carrello-item:last-child {
+  border-bottom: none;
+}
+
+.item-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  flex: 1;
+}
+
+.item-emoji {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.item-info h3 {
+  margin: 0 0 5px 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.item-categoria {
+  display: inline-block;
+  background-color: #667eea;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.item-prezzo {
+  color: #4caf50;
+  font-weight: bold;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.item-dettagli {
+  color: #666;
+  font-size: 13px;
+  margin: 5px 0 0 0;
+}
+
+.item-azioni {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.quantita-controlli {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantita-controlli button {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+.quantita-controlli button:hover {
+  background-color: #f0f0f0;
+}
+
+.quantita-controlli span {
+  min-width: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.subtotale {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  font-weight: bold;
+}
+
+.btn-rimuovi {
+  padding: 10px 18px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.btn-rimuovi:hover {
+  background-color: #d32f2f;
+}
+
+.carrello-riepilogo {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.carrello-riepilogo h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.riepilogo-dettagli {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.riga-riepilogo {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #666;
+  font-size: 15px;
+}
+
+.riga-riepilogo span:last-child {
+  font-weight: bold;
+  color: #333;
+}
+
+.totale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  margin: 20px 0 30px 0;
+  padding: 20px;
+  border-top: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+}
+
+.prezzo-totale {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.btn-ordina {
+  width: 100%;
+  padding: 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-ordina:hover {
+  background-color: #45a049;
+  transform: scale(1.02);
+}
+
+.btn-ordina:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carrello-item {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .item-info {
+    width: 100%;
+  }
+
+  .item-azioni {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-rimuovi {
+    width: 100%;
+  }
+
+  .totale {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #34495E, #2C3E50);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.login-container h1 {
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.login-container p {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.form-group input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: #ffffff;
+  color: #2C3E50;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.extra-links {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.extra-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.extra-links a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 24px;
+    border-radius: 16px;
+  }
+
+  .login-container h1 {
+    font-size: 26px;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
