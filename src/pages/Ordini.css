@@ -86,9 +86,28 @@
   border-left: 4px solid #4caf50;
 }
 
+/* Immagine prodotto negli ordini - DIMENSIONI FISSE */
+.prodotto-immagine {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Emoji fallback */
 .prodotto-emoji {
   font-size: 40px;
   flex-shrink: 0;
+  width: 80px;
+  min-width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .prodotto-dettagli {
@@ -175,7 +194,21 @@
 
   .prodotto-ordine {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+  }
+
+  .prodotto-immagine {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 0 auto;
+  }
+
+  .prodotto-emoji {
+    width: 100%;
+    height: auto;
   }
 
   .ordine-riepilogo {

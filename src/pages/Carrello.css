@@ -63,9 +63,21 @@
   flex: 1;
 }
 
+/* Immagine prodotto nel carrello */
+.item-immagine {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Emoji fallback */
 .item-emoji {
   font-size: 48px;
   flex-shrink: 0;
+  width: 100px;
+  text-align: center;
 }
 
 .item-info h3 {
@@ -234,6 +246,16 @@
 
   .item-info {
     width: 100%;
+  }
+
+  .item-immagine {
+    width: 80px;
+    height: 80px;
+  }
+
+  .item-emoji {
+    font-size: 40px;
+    width: 80px;
   }
 
   .item-azioni {

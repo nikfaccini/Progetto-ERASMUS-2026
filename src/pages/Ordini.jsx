@@ -8,9 +8,27 @@ const Ordini = () => {
   useEffect(() => {
     const ordiniSalvati = localStorage.getItem("ordini");
     if (ordiniSalvati) {
-      setOrdini(JSON.parse(ordiniSalvati));
+      // Ordina dal più recente al più vecchio
+      const ordiniArray = JSON.parse(ordiniSalvati);
+      setOrdini(ordiniArray.reverse());
     }
   }, []);
+
+  // Emoji per le categorie (fallback)
+  const getEmojiCategoria = (categoria) => {
+    switch (categoria) {
+      case "Pallet":
+        return "📦";
+      case "Accessori pallet":
+        return "🔧";
+      case "Protezione merci":
+        return "🛡️";
+      case "Espositori":
+        return "🏪";
+      default:
+        return "📦";
+    }
+  };
 
   return (
     <div className="ordini-container">
@@ -25,30 +43,59 @@ const Ordini = () => {
           {ordini.map((ordine) => (
             <div key={ordine.id} className="ordine-card">
               <div className="ordine-header">
-                <h3>Ordine #{ordine.id}</h3>
-                <p className="ordine-data">{ordine.data}</p>
+                <div>
+                  <h3>Ordine #{ordine.id}</h3>
+                  <p className="ordine-data">📅 {ordine.data}</p>
+                </div>
+                <div className="ordine-badge">
+                  {ordine.prodotti.reduce((tot, p) => tot + p.quantita, 0)} articoli
+                </div>
               </div>
 
               <div className="ordine-prodotti">
                 {ordine.prodotti.map((prodotto) => (
                   <div key={prodotto.id} className="prodotto-ordine">
-                    <span className="prodotto-emoji">{prodotto.immagine}</span>
+                    {prodotto.immagine ? (
+                      <img 
+                        src={prodotto.immagine} 
+                        alt={prodotto.nome}
+                        className="prodotto-immagine"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'block';
+                        }}
+                      />
+                    ) : null}
+                    <span 
+                      className="prodotto-emoji" 
+                      style={{ display: prodotto.immagine ? 'none' : 'inline-block' }}
+                    >
+                      {getEmojiCategoria(prodotto.categoria)}
+                    </span>
+
                     <div className="prodotto-dettagli">
                       <p className="prodotto-nome">{prodotto.nome}</p>
+                      <p className="prodotto-categoria">{prodotto.categoria}</p>
                       <p className="prodotto-info">
-                        Quantità: {prodotto.quantita} × € {prodotto.prezzo.toFixed(2)}
+                        {prodotto.quantita} × € {prodotto.prezzo.toFixed(2)} = 
+                        <strong> € {(prodotto.prezzo * prodotto.quantita).toFixed(2)}</strong>
+                      </p>
+                      <p className="prodotto-specifiche">
+                        {prodotto.materiale} • {prodotto.dimensioni_cm} cm • {prodotto.peso_kg} kg
                       </p>
                     </div>
-                    <p className="prodotto-subtotale">
-                      € {(prodotto.prezzo * prodotto.quantita).toFixed(2)}
-                    </p>
                   </div>
                 ))}
               </div>
 
-              <div className="ordine-totale">
-                <span>Totale:</span>
-                <span className="totale-prezzo">€ {ordine.totale.toFixed(2)}</span>
+              <div className="ordine-riepilogo">
+                <div className="ordine-info">
+                  <p>Peso totale: <strong>{ordine.prodotti.reduce((tot, p) => tot + (p.peso_kg * p.quantita), 0)} kg</strong></p>
+                </div>
+                <div className="ordine-totale">
+                  <span>Totale:</span>
+                  <span className="totale-prezzo">€ {ordine.totale.toFixed(2)}</span>
+                </div>
               </div>
             </div>
           ))}

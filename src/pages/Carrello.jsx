@@ -28,9 +28,18 @@ const Carrello = () => {
 
   // Aumenta quantità
   const aumentaQuantita = (id) => {
-    const nuovoCarrello = carrello.map((item) =>
-      item.id === id ? { ...item, quantita: item.quantita + 1 } : item
-    );
+    const nuovoCarrello = carrello.map((item) => {
+      if (item.id === id) {
+        // Controlla se c'è ancora disponibilità
+        if (item.quantita < item.disponibilita) {
+          return { ...item, quantita: item.quantita + 1 };
+        } else {
+          alert(`Disponibilità massima raggiunta: ${item.disponibilita} unità`);
+          return item;
+        }
+      }
+      return item;
+    });
     setCarrello(nuovoCarrello);
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
   };
@@ -74,6 +83,22 @@ const Carrello = () => {
     navigate("/ordini");
   };
 
+  // Emoji per le categorie (fallback)
+  const getEmojiCategoria = (categoria) => {
+    switch (categoria) {
+      case "Pallet":
+        return "📦";
+      case "Accessori pallet":
+        return "🔧";
+      case "Protezione merci":
+        return "🛡️";
+      case "Espositori":
+        return "🏪";
+      default:
+        return "📦";
+    }
+  };
+
   return (
     <div className="carrello-container">
       <h1>Il Tuo Carrello</h1>
@@ -91,10 +116,32 @@ const Carrello = () => {
             {carrello.map((item) => (
               <div key={item.id} className="carrello-item">
                 <div className="item-info">
-                  <span className="item-emoji">{item.immagine}</span>
+                  {/* Mostra immagine o emoji */}
+                  {item.immagine ? (
+                    <img 
+                      src={item.immagine} 
+                      alt={item.nome}
+                      className="item-immagine"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                  ) : null}
+                  <span 
+                    className="item-emoji" 
+                    style={{ display: item.immagine ? 'none' : 'inline-block' }}
+                  >
+                    {getEmojiCategoria(item.categoria)}
+                  </span>
+
                   <div>
                     <h3>{item.nome}</h3>
-                    <p className="item-prezzo">€ {item.prezzo.toFixed(2)}</p>
+                    <p className="item-categoria">{item.categoria}</p>
+                    <p className="item-prezzo">€ {item.prezzo.toFixed(2)} / unità</p>
+                    <p className="item-dettagli">
+                      {item.materiale} • {item.dimensioni_cm} cm • {item.peso_kg} kg
+                    </p>
                   </div>
                 </div>
 
@@ -122,6 +169,16 @@ const Carrello = () => {
 
           <div className="carrello-riepilogo">
             <h2>Riepilogo Ordine</h2>
+            <div className="riepilogo-dettagli">
+              <div className="riga-riepilogo">
+                <span>Numero articoli:</span>
+                <span>{carrello.reduce((tot, item) => tot + item.quantita, 0)}</span>
+              </div>
+              <div className="riga-riepilogo">
+                <span>Peso totale:</span>
+                <span>{carrello.reduce((tot, item) => tot + (item.peso_kg * item.quantita), 0)} kg</span>
+              </div>
+            </div>
             <div className="totale">
               <span>Totale:</span>
               <span className="prezzo-totale">€ {calcolaTotale().toFixed(2)}</span>
