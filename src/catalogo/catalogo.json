@@ -1,79 +1,76 @@
 {
-  "catalogo": {
-    "valuta": "EUR",
-    "prodotti": [
-      {
-        "id": 1,
-        "nome": "Pallet in legno",
-        "categoria": "Pallet",
-        "descrizione": "Pallet in legno resistenti, ideali per trasporto e stoccaggio merci.",
-        "prezzo": 12.50,
-        "dimensioni_cm": "120x80x14",
-        "peso_kg": 25,
-        "materiale": "Legno",
-        "disponibilita": 200,
-        "immagine": "https://www.galvanimballaggi.it/img/pallet/EPAL-EUR-hd.png"
-      },
-      {
-        "id": 2,
-        "nome": "Pallet in legno pressato",
-        "categoria": "Pallet",
-        "descrizione": "Pallet leggeri ed economici, adatti alle spedizioni.",
-        "prezzo": 9.90,
-        "dimensioni_cm": "120x80x13",
-        "peso_kg": 15,
-        "materiale": "Legno pressato riciclato",
-        "disponibilita": 300,
-        "immagine": "https://packagingspace.net/files/chunks/5dc93ab7a0d5566f99000291/5dc93b71a0d5566f99000292.jpg"
-      },
-      {
-        "id": 3,
-        "nome": "Pallet in plastica",
-        "categoria": "Pallet",
-        "descrizione": "Pallet in plastica igienici e facili da pulire.",
-        "prezzo": 24.00,
-        "dimensioni_cm": "120x80x15",
-        "peso_kg": 18,
-        "materiale": "Plastica",
-        "disponibilita": 150,
-        "immagine": "https://i0.wp.com/www.palbox.it/wp-content/uploads/palbox_kiste3.png?fit=1024%2C512&ssl=1"
-      },
-      {
-        "id": 4,
-        "nome": "Paretali in legno",
-        "categoria": "Accessori pallet",
-        "descrizione": "Strutture in legno per proteggere la merce sui pallet.",
-        "prezzo": 18.00,
-        "dimensioni_cm": "120x80x60",
-        "peso_kg": 10,
-        "materiale": "Legno",
-        "disponibilita": 100,
-        "immagine": "https://api.pim.neupack.com/media/fbd/v000247-palettenrahmen.jpg"
-      },
-      {
-        "id": 5,
-        "nome": "Plance di protezione",
-        "categoria": "Protezione merci",
-        "descrizione": "Plance in legno per separare e proteggere i carichi.",
-        "prezzo": 6.50,
-        "dimensioni_cm": "120x80",
-        "peso_kg": 5,
-        "materiale": "Legno",
-        "disponibilita": 400,
-        "immagine": "https://epicomm.it/16889-home_default/fogli-intercalari-antiscivolo-plastificati-interfalde-bancali.jpg"
-      },
-      {
-        "id": 6,
-        "nome": "Display in pallet",
-        "categoria": "Espositori",
-        "descrizione": "Display realizzati con pallet per l'esposizione dei prodotti.",
-        "prezzo": 45.00,
-        "dimensioni_cm": "120x80x180",
-        "peso_kg": 30,
-        "materiale": "Legno",
-        "disponibilita": 50,
-        "immagine": "https://i.pinimg.com/736x/b5/b4/57/b5b457aee7b78da117475e2eafc6b8a7.jpg"
-      }
-    ]
-  }
+  "prodotti": [
+    {
+      "id": 1,
+      "nome": "Pallet in legno",
+      "categoria": "Pallet",
+      "descrizione": "Pallet in legno resistenti, ideali per trasporto e stoccaggio merci.",
+      "prezzo": 12.50,
+      "dimensioni": "120x80x14 cm",
+      "peso": 25,
+      "materiale": "Legno",
+      "disponibilita": 200,
+      "immagine": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop"
+    },
+    {
+      "id": 2,
+      "nome": "Pallet in legno pressato",
+      "categoria": "Pallet",
+      "descrizione": "Pallet leggeri ed economici, adatti alle spedizioni.",
+      "prezzo": 9.90,
+      "dimensioni": "120x80x13 cm",
+      "peso": 15,
+      "materiale": "Legno pressato riciclato",
+      "disponibilita": 300,
+      "immagine": "https://images.unsplash.com/photo-1565084888279-aca607ecce10?w=400&h=300&fit=crop"
+    },
+    {
+      "id": 3,
+      "nome": "Pallet in plastica",
+      "categoria": "Pallet",
+      "descrizione": "Pallet in plastica igienici e facili da pulire.",
+      "prezzo": 24.00,
+      "dimensioni": "120x80x15 cm",
+      "peso": 18,
+      "materiale": "Plastica",
+      "disponibilita": 150,
+      "immagine": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=400&h=300&fit=crop"
+    },
+    {
+      "id": 4,
+      "nome": "Paretali in legno",
+      "categoria": "Accessori pallet",
+      "descrizione": "Strutture in legno per proteggere la merce sui pallet.",
+      "prezzo": 18.00,
+      "dimensioni": "120x80x60 cm",
+      "peso": 10,
+      "materiale": "Legno",
+      "disponibilita": 100,
+      "immagine": "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=400&h=300&fit=crop"
+    },
+    {
+      "id": 5,
+      "nome": "Plance di protezione",
+      "categoria": "Protezione merci",
+      "descrizione": "Plance in legno per separare e proteggere i carichi.",
+      "prezzo": 6.50,
+      "dimensioni": "120x80 cm",
+      "peso": 5,
+      "materiale": "Legno",
+      "disponibilita": 400,
+      "immagine": "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&h=300&fit=crop"
+    },
+    {
+      "id": 6,
+      "nome": "Display in pallet",
+      "categoria": "Espositori",
+      "descrizione": "Display realizzati con pallet per l'esposizione dei prodotti.",
+      "prezzo": 45.00,
+      "dimensioni": "120x80x180 cm",
+      "peso": 30,
+      "materiale": "Legno",
+      "disponibilita": 50,
+      "immagine": "https://images.unsplash.com/photo-1595246140520-2b6c6d3b4c4b?w=400&h=300&fit=crop"
+    }
+  ]
 }
