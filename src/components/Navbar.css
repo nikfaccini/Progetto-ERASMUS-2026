@@ -1,3 +1,4 @@
+/* Font globale */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
 
 .navbar {
@@ -7,81 +8,40 @@
   justify-content: space-between;
   align-items: center;
   background-color: #333;
-  position: relative;
 }
 
-.navbar-brand {
+.navbar .navbar-brand {
   font-size: 24px;
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
-  z-index: 1001;
 }
 
-/* Hamburger button - nascosto su desktop */
-.hamburger {
-  display: none;
-  flex-direction: column;
+.navbar a,
+.navbar button {
+  color: #ffffff;
+  margin-left: 12px;
+  text-decoration: none;
+  font-weight: 500;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  z-index: 1001;
 }
 
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background-color: #ffffff;
-  margin: 3px 0;
-  transition: 0.3s;
-  border-radius: 3px;
+.navbar button:hover,
+.navbar a:hover {
+  color: #ffd700;
 }
 
-/* Menu navigazione */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 8px 12px;
+.navbar .btn-outline-danger {
+  border: 1px solid #ff4b5c;
+  padding: 6px 12px;
   border-radius: 6px;
-  transition: background-color 0.3s;
 }
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.btn-login,
-.btn-logout {
-  background-color: #4caf50;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn-login:hover,
-.btn-logout:hover {
-  background-color: #45a049;
-}
-
-.btn-logout {
-  background-color: #f44336;
-}
-
-.btn-logout:hover {
-  background-color: #d32f2f;
+.navbar .btn-outline-danger:hover {
+  background-color: #ff4b5c;
+  color: #fff;
 }
 
 /* RESPONSIVE - Mobile */
