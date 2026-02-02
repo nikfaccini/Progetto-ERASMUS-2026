@@ -9,7 +9,7 @@ const Home = () => {
     <div className="home-container">
       <div className="hero-section">
         <h1>Benvenuto {isLogged && utente.nome ? utente.nome : ""} nel nostro eCommerce! 🛍️</h1>
-        <p>Scopri i nostri prodotti tecnologici al miglior prezzo</p>
+        <p>Scopri i nostri pallet al miglior prezzo</p>
 
         {!isLogged ? (
           <div className="home-buttons">
