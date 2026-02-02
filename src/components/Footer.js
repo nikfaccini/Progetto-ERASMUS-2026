@@ -6,32 +6,46 @@ const Footer = () => {
   const location = useLocation();
   const [isLogged, setIsLogged] = useState(false);
 
-  // Controlla login ad ogni cambio route
   useEffect(() => {
     const logged = localStorage.getItem("isLogged");
     setIsLogged(!!logged);
   }, [location]);
 
   return (
-    <footer className="footer bg-dark text-white">
+    <footer className="footer">
       <div className="footer-container">
-        <div className="footer-brand">
-          <h4>MyShop</h4>
-          <p>© 2026 Tutti i diritti riservati</p>
+        {/* BRAND */}
+        <div className="footer-section brand">
+          <h3>MyShop</h3>
+          <p>
+            Il tuo shop online di fiducia. <br />
+            Qualità, sicurezza e spedizioni rapide.
+          </p>
+          <span className="copyright">
+            © {new Date().getFullYear()} MyShop
+          </span>
         </div>
 
-        <div className="footer-links">
+        {/* LINK */}
+        <div className="footer-section">
+          <h4>Esplora</h4>
           <Link to="/">Home</Link>
           <Link to="/prodotti">Prodotti</Link>
+          {isLogged && <Link to="/carrello">Carrello</Link>}
+          {isLogged && <Link to="/ordini">Ordini</Link>}
+        </div>
 
-          {isLogged && (
+        {/* ACCOUNT */}
+        <div className="footer-section">
+          <h4>Account</h4>
+          {!isLogged ? (
             <>
-              <Link to="/carrello">Carrello</Link>
-              <Link to="/ordini">Ordini</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/registrazione">Registrati</Link>
             </>
+          ) : (
+            <span className="logged">Utente loggato</span>
           )}
-
-          {!isLogged && <Link to="/login">Login</Link>}
         </div>
       </div>
     </footer>
