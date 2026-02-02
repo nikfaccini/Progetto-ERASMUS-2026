@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import Home from "./pages/Home";
@@ -10,35 +11,54 @@ import Prodotti from "./pages/Prodotti";
 import Carrello from "./pages/Carrello";
 import Ordini from "./pages/Ordini";
 
+function AppLayout() {
+  const location = useLocation();
+
+  // Nasconde il footer su login e registrazione (opzionale)
+  const hideFooter =
+    location.pathname === "/login" ||
+    location.pathname === "/registrazione";
+
+  return (
+    <>
+      <Navbar />
+
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registrazione" element={<Registrazione />} />
+          <Route path="/prodotti" element={<Prodotti />} />
+
+          <Route
+            path="/carrello"
+            element={
+              <ProtectedRoute>
+                <Carrello />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/ordini"
+            element={
+              <ProtectedRoute>
+                <Ordini />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </main>
+
+      {!hideFooter && <Footer />}
+    </>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registrazione" element={<Registrazione />} />
-        <Route path="/prodotti" element={<Prodotti />} />
-
-        <Route
-          path="/carrello"
-          element={
-            <ProtectedRoute>
-              <Carrello />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/ordini"
-          element={
-            <ProtectedRoute>
-              <Ordini />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+      <AppLayout />
     </BrowserRouter>
   );
 }
