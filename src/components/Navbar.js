@@ -6,8 +6,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLogged, setIsLogged] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Controlla lo stato del login ogni volta che cambia la route
   useEffect(() => {
     const logged = localStorage.getItem("isLogged");
     setIsLogged(!!logged);
@@ -16,34 +16,58 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("isLogged");
     setIsLogged(false);
+    setMenuOpen(false);
     navigate("/login");
   };
 
-  return (
-    <nav className="navbar navbar-dark bg-dark px-4">
-      <Link className="navbar-brand" to="/">MyShop</Link>
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
-      <div>
-        <Link className="btn btn-link text-white" to="/">Home</Link>
-        <Link className="btn btn-link text-white" to="/prodotti">Prodotti</Link>
+  return (
+    <nav className="navbar">
+      <Link className="navbar-brand" to="/" onClick={closeMenu}>
+        MyShop
+      </Link>
+
+      <button 
+        className="hamburger"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+        <Link className="nav-link" to="/" onClick={closeMenu}>
+          Home
+        </Link>
+        <Link className="nav-link" to="/chi-siamo" onClick={closeMenu}>
+          Chi Siamo
+        </Link>
+        <Link className="nav-link" to="/prodotti" onClick={closeMenu}>
+          Prodotti
+        </Link>
 
         {isLogged && (
           <>
-            <Link className="btn btn-link text-white" to="/carrello">
+            <Link className="nav-link" to="/carrello" onClick={closeMenu}>
               Carrello
             </Link>
-            <Link className="btn btn-link text-white" to="/ordini">
+            <Link className="nav-link" to="/ordini" onClick={closeMenu}>
               Ordini
             </Link>
           </>
         )}
 
         {!isLogged ? (
-          <Link className="btn btn-outline-light ms-2" to="/login">
+          <Link className="btn-login" to="/login" onClick={closeMenu}>
             Login
           </Link>
         ) : (
-          <button className="btn btn-outline-danger ms-2" onClick={logout}>
+          <button className="btn-logout" onClick={logout}>
             Logout
           </button>
         )}

@@ -1,34 +1,122 @@
-.container {
-  max-width: 900px;
+.chi-siamo-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.chi-siamo-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.chi-siamo-header h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: white;
+}
+
+.chi-siamo-header p {
+  font-size: 18px;
+  opacity: 0.9;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 30px 20px;
-  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  color: white;
+}
+
+.content-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-section h2 {
   color: #333;
+  font-size: 28px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-h1 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #764ba2;
+.content-section h2::before {
+  content: '';
+  width: 4px;
+  height: 28px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
 }
 
-h2 {
-  font-size: 24px;
-  font-weight: 600;
+.content-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+}
+
+.valori-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
   margin-top: 20px;
+}
+
+.valore-item {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.valore-item:hover {
+  transform: translateY(-5px);
+}
+
+.valore-item::before {
+  content: '✓';
+  display: block;
+  font-size: 32px;
+  color: #4caf50;
   margin-bottom: 10px;
 }
 
-p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 12px;
+.valore-item p {
+  margin: 0;
+  font-weight: 600;
+  color: #333;
 }
 
-.mission {
-  background-color: #f0f0ff;
-  padding: 16px;
-  border-radius: 10px;
-  margin-top: 20px;
+/* Responsive */
+@media (max-width: 768px) {
+  .chi-siamo-header {
+    padding: 40px 20px;
+  }
+
+  .chi-siamo-header h1 {
+    font-size: 32px;
+  }
+
+  .chi-siamo-header p {
+    font-size: 16px;
+  }
+
+  .content-section {
+    padding: 20px;
+  }
+
+  .content-section h2 {
+    font-size: 24px;
+  }
+
+  .valori-list {
+    grid-template-columns: 1fr;
+  }
 }

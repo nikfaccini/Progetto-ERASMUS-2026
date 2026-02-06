@@ -116,6 +116,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
+  margin-bottom: 40px;
 }
 
 .prodotto-preview-card {
@@ -147,6 +148,46 @@
   line-height: 1.6;
 }
 
+.chi-siamo-preview {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 50px 40px;
+  margin: 40px 0;
+  text-align: center;
+  color: white;
+}
+
+.chi-siamo-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.chi-siamo-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  opacity: 0.95;
+}
+
+.btn-scopri {
+  display: inline-block;
+  padding: 15px 40px;
+  background-color: white;
+  color: #667eea;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-scopri:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero-section h1 {
@@ -175,5 +216,17 @@
   .prodotti-preview {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .chi-siamo-preview {
+    padding: 40px 20px;
+  }
+
+  .chi-siamo-content h2 {
+    font-size: 28px;
+  }
+
+  .chi-siamo-content p {
+    font-size: 16px;
   }
 }
