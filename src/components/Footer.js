@@ -39,10 +39,10 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Contatti</h4>
           <ul className="contact-info">
-            <li>📍 Via Esempio 123, Milano</li>
-            <li>📞 +39 02 1234567</li>
-            <li>✉️ info@myshop.it</li>
-            <li>🕐 Lun-Ven: 9:00-18:00</li>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">📘</a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">📷</a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">💼</a>
+            <a href="mailto:info@myshop.it" aria-label="Email">✉️</a>
           </ul>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -12,16 +12,9 @@ import Carrello from "./pages/Carrello";
 import Ordini from "./pages/Ordini";
 import ChiSiamo from "./pages/ChiSiamo";
 
-function AppLayout() {
-  const location = useLocation();
-
-  // Nasconde il footer su login e registrazione (opzionale)
-  const hideFooter =
-    location.pathname === "/login" ||
-    location.pathname === "/registrazione";
-
+function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
 
       <main className="main-content">
@@ -30,6 +23,7 @@ function AppLayout() {
           <Route path="/login" element={<Login />} />
           <Route path="/registrazione" element={<Registrazione />} />
           <Route path="/prodotti" element={<Prodotti />} />
+          <Route path="/chi-siamo" element={<ChiSiamo />} />
 
           <Route
             path="/carrello"
@@ -50,42 +44,6 @@ function AppLayout() {
           />
         </Routes>
       </main>
-
-      {!hideFooter && <Footer />}
-    </>
-  );
-}
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registrazione" element={<Registrazione />} />
-        <Route path="/prodotti" element={<Prodotti />} />
-        <Route path="/chi-siamo" element={<ChiSiamo />} />
-
-        <Route
-          path="/carrello"
-          element={
-            <ProtectedRoute>
-              <Carrello />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/ordini"
-          element={
-            <ProtectedRoute>
-              <Ordini />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
 
       <Footer />
     </BrowserRouter>
