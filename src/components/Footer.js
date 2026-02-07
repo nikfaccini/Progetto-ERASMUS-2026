@@ -8,12 +8,6 @@ const Footer = () => {
         <div className="footer-section">
           <h3>MyShop</h3>
           <p>La tua soluzione per pallet e accessori logistici di qualità dal 2014.</p>
-          <div className="social-links">
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="LinkedIn">💼</a>
-            <a href="#" aria-label="Email">✉️</a>
-          </div>
         </div>
 
         <div className="footer-section">
