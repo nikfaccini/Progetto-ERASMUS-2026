@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://tuosito.com/sitemap.xml
+Sitemap: https://raw.githubusercontent.com/nikfaccini/Progetto-ERASMUS-2026/refs/heads/main/Sitemap.xml
