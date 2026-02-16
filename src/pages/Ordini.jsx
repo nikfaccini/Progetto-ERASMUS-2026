@@ -4,17 +4,14 @@ import './Ordini.css';
 const Ordini = () => {
   const [ordini, setOrdini] = useState([]);
 
-  // Carica gli ordini dal localStorage
   useEffect(() => {
     const ordiniSalvati = localStorage.getItem("ordini");
     if (ordiniSalvati) {
-      // Ordina dal più recente al più vecchio
       const ordiniArray = JSON.parse(ordiniSalvati);
       setOrdini(ordiniArray.reverse());
     }
   }, []);
 
-  // Emoji per le categorie (fallback)
   const getEmojiCategoria = (categoria) => {
     switch (categoria) {
       case "Pallet":

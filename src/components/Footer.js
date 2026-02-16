@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
+import logo from './logo-senza.png';
+
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h3>MyShop</h3>
+          <img src={logo} alt="Icona" width="150" />
           <p>La tua soluzione per pallet e accessori logistici di qualità dal 2014.</p>
         </div>
 
@@ -30,19 +32,10 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="footer-section">
-          <h4>Contatti</h4>
-          <ul className="contact-info">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">📘</a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">📷</a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">💼</a>
-            <a href="mailto:info@myshop.it" aria-label="Email">✉️</a>
-          </ul>
-        </div>
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2024 MyShop - VerdePal Pallet. Tutti i diritti riservati.</p>
+        <p>&copy;VerdePal Pallet. Tutti i diritti riservati.</p>
       </div>
     </footer>
   );

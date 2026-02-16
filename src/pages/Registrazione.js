@@ -15,7 +15,6 @@ const Registrazione = () => {
   const salva = (e) => {
     e.preventDefault();
 
-    // Validazione password
     if (password !== confermaPassword) {
       setErrore("Le password non corrispondono!");
       return;
@@ -33,12 +32,10 @@ const Registrazione = () => {
       password,
     };
 
-    // 🔐 Salvataggio localStorage
     localStorage.setItem("utenteRegistrato", JSON.stringify(utente));
 
     console.log("Utente salvato:", utente);
 
-    // Reindirizza al login
     navigate("/login");
   };
 

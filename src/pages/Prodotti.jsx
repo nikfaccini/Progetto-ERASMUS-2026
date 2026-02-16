@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Prodotti.css';
-
-// Importo il catalogo dal JSON
 import catalogoData from '../catalogo/catalogo.json';
 
 const Prodotti = () => {
@@ -9,36 +7,28 @@ const Prodotti = () => {
   const [messaggio, setMessaggio] = useState("");
   const [prodotti, setProdotti] = useState([]);
 
-  // Carica i prodotti dal JSON quando il componente viene montato
   useEffect(() => {
     setProdotti(catalogoData.catalogo.prodotti);
   }, []);
 
   const aggiungiAlCarrello = (prodotto) => {
-    // Prendi il carrello dal localStorage
     const carrelloSalvato = localStorage.getItem("carrello");
     const carrello = carrelloSalvato ? JSON.parse(carrelloSalvato) : [];
 
-    // Controlla se il prodotto è già nel carrello
     const prodottoEsistente = carrello.find((item) => item.id === prodotto.id);
 
     if (prodottoEsistente) {
-      // Se esiste, aumenta la quantità
       prodottoEsistente.quantita += 1;
     } else {
-      // Altrimenti aggiungilo con quantità 1
       carrello.push({ ...prodotto, quantita: 1 });
     }
 
-    // Salva il carrello aggiornato
     localStorage.setItem("carrello", JSON.stringify(carrello));
 
-    // Mostra messaggio di conferma
     setMessaggio(`✅ ${prodotto.nome} aggiunto al carrello!`);
     setTimeout(() => setMessaggio(""), 3000);
   };
 
-  // Emoji per le categorie (fallback se l'immagine non carica)
   const getEmojiCategoria = (categoria) => {
     switch (categoria) {
       case "Pallet":
@@ -66,14 +56,12 @@ const Prodotti = () => {
           <div key={prodotto.id} className="prodotto-card">
             <div className="prodotto-badge">{prodotto.categoria}</div>
             
-            {/* Mostra immagine se disponibile, altrimenti emoji */}
             {prodotto.immagine ? (
               <img 
                 src={prodotto.immagine} 
                 alt={prodotto.nome}
                 className="prodotto-immagine-foto"
                 onError={(e) => {
-                  // Se l'immagine non carica, mostra l'emoji
                   e.target.style.display = 'none';
                   e.target.nextSibling.style.display = 'block';
                 }}

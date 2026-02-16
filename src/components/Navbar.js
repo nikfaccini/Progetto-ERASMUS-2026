@@ -1,6 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Navbar.css";
+import logo from './logo-invertito.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link className="navbar-brand" to="/" onClick={closeMenu}>
-        MyShop
+        <img src={logo} alt="Icona" width="100" />
       </Link>
 
       <button 

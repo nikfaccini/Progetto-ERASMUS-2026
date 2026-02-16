@@ -25,9 +25,8 @@ const Login = () => {
       email === utenteSalvato.email &&
       password === utenteSalvato.password
     ) {
-      // ✅ login OK → sessione
       localStorage.setItem("isLogged", "true");
-      navigate("/"); // FIX: era "/home", ma la route è "/"
+      navigate("/");
     } else {
       setErrore("Email o password non corrette");
     }

@@ -52,9 +52,6 @@ const ChiSiamo = () => {
           <div className="valore-item">
             <p>Innovazione Produttiva</p>
           </div>
-          <div className="valore-item">
-            <p>Affidabilità</p>
-          </div>
         </div>
       </div>
     </div>

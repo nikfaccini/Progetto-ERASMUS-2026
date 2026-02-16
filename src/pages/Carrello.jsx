@@ -6,7 +6,6 @@ const Carrello = () => {
   const navigate = useNavigate();
   const [carrello, setCarrello] = useState([]);
 
-  // Carica il carrello dal localStorage quando il componente viene montato
   useEffect(() => {
     const carrelloSalvato = localStorage.getItem("carrello");
     if (carrelloSalvato) {
@@ -14,23 +13,19 @@ const Carrello = () => {
     }
   }, []);
 
-  // Calcola il totale
   const calcolaTotale = () => {
     return carrello.reduce((totale, item) => totale + item.prezzo * item.quantita, 0);
   };
 
-  // Rimuovi prodotto dal carrello
   const rimuoviProdotto = (id) => {
     const nuovoCarrello = carrello.filter((item) => item.id !== id);
     setCarrello(nuovoCarrello);
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
   };
 
-  // Aumenta quantità
   const aumentaQuantita = (id) => {
     const nuovoCarrello = carrello.map((item) => {
       if (item.id === id) {
-        // Controlla se c'è ancora disponibilità
         if (item.quantita < item.disponibilita) {
           return { ...item, quantita: item.quantita + 1 };
         } else {
@@ -44,7 +39,6 @@ const Carrello = () => {
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
   };
 
-  // Diminuisci quantità
   const diminuisciQuantita = (id) => {
     const nuovoCarrello = carrello.map((item) =>
       item.id === id && item.quantita > 1 ? { ...item, quantita: item.quantita - 1 } : item
@@ -53,14 +47,12 @@ const Carrello = () => {
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
   };
 
-  // Procedi all'ordine
   const procediOrdine = () => {
     if (carrello.length === 0) {
       alert("Il carrello è vuoto!");
       return;
     }
 
-    // Crea l'ordine
     const ordine = {
       id: Date.now(),
       data: new Date().toLocaleString('it-IT'),
@@ -68,22 +60,18 @@ const Carrello = () => {
       totale: calcolaTotale(),
     };
 
-    // Salva l'ordine nello storico
     const ordiniSalvati = localStorage.getItem("ordini");
     const ordini = ordiniSalvati ? JSON.parse(ordiniSalvati) : [];
     ordini.push(ordine);
     localStorage.setItem("ordini", JSON.stringify(ordini));
 
-    // Svuota il carrello
     setCarrello([]);
     localStorage.removeItem("carrello");
 
-    // Vai alla pagina ordini
     alert("Ordine effettuato con successo!");
     navigate("/ordini");
   };
 
-  // Emoji per le categorie (fallback)
   const getEmojiCategoria = (categoria) => {
     switch (categoria) {
       case "Pallet":
@@ -116,7 +104,6 @@ const Carrello = () => {
             {carrello.map((item) => (
               <div key={item.id} className="carrello-item">
                 <div className="item-info">
-                  {/* Mostra immagine o emoji */}
                   {item.immagine ? (
                     <img 
                       src={item.immagine} 
