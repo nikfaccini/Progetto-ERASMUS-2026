@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="hero-section">
-        <h1>Benvenuto {isLogged && utente.nome ? utente.nome : ""} su MyShop! 📦</h1>
+        <h1>Benvenuto {isLogged && utente.nome ? utente.nome : ""} su VerdePal! 📦</h1>
         <p>La tua soluzione per pallet e accessori logistici di qualità</p>
 
         {!isLogged ? (
