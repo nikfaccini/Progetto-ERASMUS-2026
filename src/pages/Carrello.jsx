@@ -6,6 +6,7 @@ const Carrello = () => {
   const navigate = useNavigate();
   const [carrello, setCarrello] = useState([]);
 
+  // Carica il carrello quando la pagina si apre
   useEffect(() => {
     const carrelloSalvato = localStorage.getItem("carrello");
     if (carrelloSalvato) {
@@ -13,46 +14,92 @@ const Carrello = () => {
     }
   }, []);
 
+  // Calcola il totale del carrello
   const calcolaTotale = () => {
-    return carrello.reduce((totale, item) => totale + item.prezzo * item.quantita, 0);
+    let totale = 0;
+    for (let i = 0; i < carrello.length; i++) {
+      totale = totale + (carrello[i].prezzo * carrello[i].quantita);
+    }
+    return totale;
   };
 
+  // Rimuove un prodotto dal carrello
   const rimuoviProdotto = (id) => {
-    const nuovoCarrello = carrello.filter((item) => item.id !== id);
-    setCarrello(nuovoCarrello);
-    localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
-  };
-
-  const aumentaQuantita = (id) => {
-    const nuovoCarrello = carrello.map((item) => {
-      if (item.id === id) {
-        if (item.quantita < item.disponibilita) {
-          return { ...item, quantita: item.quantita + 1 };
-        } else {
-          alert(`Disponibilità massima raggiunta: ${item.disponibilita} unità`);
-          return item;
-        }
+    const nuovoCarrello = [];
+    for (let i = 0; i < carrello.length; i++) {
+      if (carrello[i].id !== id) {
+        nuovoCarrello.push(carrello[i]);
       }
-      return item;
-    });
+    }
     setCarrello(nuovoCarrello);
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
   };
 
+  // Aumenta la quantità di un prodotto
+  const aumentaQuantita = (id) => {
+    const nuovoCarrello = [];
+    for (let i = 0; i < carrello.length; i++) {
+      if (carrello[i].id === id) {
+        if (carrello[i].quantita < carrello[i].disponibilita) {
+          const itemAggiornato = {
+            id: carrello[i].id,
+            nome: carrello[i].nome,
+            prezzo: carrello[i].prezzo,
+            categoria: carrello[i].categoria,
+            immagine: carrello[i].immagine,
+            materiale: carrello[i].materiale,
+            dimensioni: carrello[i].dimensioni,
+            peso: carrello[i].peso,
+            disponibilita: carrello[i].disponibilita,
+            quantita: carrello[i].quantita + 1
+          };
+          nuovoCarrello.push(itemAggiornato);
+        } else {
+          alert("Disponibilità massima raggiunta: " + carrello[i].disponibilita + " unità");
+          nuovoCarrello.push(carrello[i]);
+        }
+      } else {
+        nuovoCarrello.push(carrello[i]);
+      }
+    }
+    setCarrello(nuovoCarrello);
+    localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
+  };
+
+  // Diminuisce la quantità di un prodotto
   const diminuisciQuantita = (id) => {
-    const nuovoCarrello = carrello.map((item) =>
-      item.id === id && item.quantita > 1 ? { ...item, quantita: item.quantita - 1 } : item
-    );
+    const nuovoCarrello = [];
+    for (let i = 0; i < carrello.length; i++) {
+      if (carrello[i].id === id && carrello[i].quantita > 1) {
+        const itemAggiornato = {
+          id: carrello[i].id,
+          nome: carrello[i].nome,
+          prezzo: carrello[i].prezzo,
+          categoria: carrello[i].categoria,
+          immagine: carrello[i].immagine,
+          materiale: carrello[i].materiale,
+          dimensioni: carrello[i].dimensioni,
+          peso: carrello[i].peso,
+          disponibilita: carrello[i].disponibilita,
+          quantita: carrello[i].quantita - 1
+        };
+        nuovoCarrello.push(itemAggiornato);
+      } else {
+        nuovoCarrello.push(carrello[i]);
+      }
+    }
     setCarrello(nuovoCarrello);
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
   };
 
+  // Completa l'ordine
   const procediOrdine = () => {
     if (carrello.length === 0) {
       alert("Il carrello è vuoto!");
       return;
     }
 
+    // Crea l'ordine
     const ordine = {
       id: Date.now(),
       data: new Date().toLocaleString('it-IT'),
@@ -60,11 +107,16 @@ const Carrello = () => {
       totale: calcolaTotale(),
     };
 
+    // Salva l'ordine
     const ordiniSalvati = localStorage.getItem("ordini");
-    const ordini = ordiniSalvati ? JSON.parse(ordiniSalvati) : [];
+    let ordini = [];
+    if (ordiniSalvati) {
+      ordini = JSON.parse(ordiniSalvati);
+    }
     ordini.push(ordine);
     localStorage.setItem("ordini", JSON.stringify(ordini));
 
+    // Svuota il carrello
     setCarrello([]);
     localStorage.removeItem("carrello");
 
@@ -72,19 +124,37 @@ const Carrello = () => {
     navigate("/ordini");
   };
 
+  // Restituisce l'emoji in base alla categoria
   const getEmojiCategoria = (categoria) => {
-    switch (categoria) {
-      case "Pallet":
-        return "📦";
-      case "Accessori pallet":
-        return "🔧";
-      case "Protezione merci":
-        return "🛡️";
-      case "Espositori":
-        return "🏪";
-      default:
-        return "📦";
+    if (categoria === "Pallet") {
+      return "📦";
+    } else if (categoria === "Accessori pallet") {
+      return "🔧";
+    } else if (categoria === "Protezione merci") {
+      return "🛡️";
+    } else if (categoria === "Espositori") {
+      return "🏪";
+    } else {
+      return "📦";
     }
+  };
+
+  // Calcola il numero totale di articoli nel carrello
+  const calcolaNumeroArticoli = () => {
+    let totale = 0;
+    for (let i = 0; i < carrello.length; i++) {
+      totale = totale + carrello[i].quantita;
+    }
+    return totale;
+  };
+
+  // Calcola il peso totale del carrello
+  const calcolaPesoTotale = () => {
+    let pesoTotale = 0;
+    for (let i = 0; i < carrello.length; i++) {
+      pesoTotale = pesoTotale + (carrello[i].peso * carrello[i].quantita);
+    }
+    return pesoTotale;
   };
 
   return (
@@ -127,7 +197,7 @@ const Carrello = () => {
                     <p className="item-categoria">{item.categoria}</p>
                     <p className="item-prezzo">€ {item.prezzo.toFixed(2)} / unità</p>
                     <p className="item-dettagli">
-                      {item.materiale} • {item.dimensioni_cm} cm • {item.peso_kg} kg
+                      {item.materiale} • {item.dimensioni} • {item.peso} kg
                     </p>
                   </div>
                 </div>
@@ -159,11 +229,11 @@ const Carrello = () => {
             <div className="riepilogo-dettagli">
               <div className="riga-riepilogo">
                 <span>Numero articoli:</span>
-                <span>{carrello.reduce((tot, item) => tot + item.quantita, 0)}</span>
+                <span>{calcolaNumeroArticoli()}</span>
               </div>
               <div className="riga-riepilogo">
                 <span>Peso totale:</span>
-                <span>{carrello.reduce((tot, item) => tot + (item.peso_kg * item.quantita), 0)} kg</span>
+                <span>{calcolaPesoTotale()} kg</span>
               </div>
             </div>
             <div className="totale">

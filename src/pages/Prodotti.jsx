@@ -7,40 +7,67 @@ const Prodotti = () => {
   const [messaggio, setMessaggio] = useState("");
   const [prodotti, setProdotti] = useState([]);
 
+  // Carica i prodotti dal JSON quando la pagina si apre
   useEffect(() => {
-    setProdotti(catalogoData.catalogo.prodotti);
+    setProdotti(catalogoData.prodotti);
   }, []);
 
+  // Aggiunge un prodotto al carrello
   const aggiungiAlCarrello = (prodotto) => {
+    // Prendi il carrello dal localStorage
     const carrelloSalvato = localStorage.getItem("carrello");
-    const carrello = carrelloSalvato ? JSON.parse(carrelloSalvato) : [];
-
-    const prodottoEsistente = carrello.find((item) => item.id === prodotto.id);
-
-    if (prodottoEsistente) {
-      prodottoEsistente.quantita += 1;
-    } else {
-      carrello.push({ ...prodotto, quantita: 1 });
+    let carrello = [];
+    if (carrelloSalvato) {
+      carrello = JSON.parse(carrelloSalvato);
     }
 
+    // Cerca se il prodotto è già nel carrello
+    let prodottoTrovato = false;
+    for (let i = 0; i < carrello.length; i++) {
+      if (carrello[i].id === prodotto.id) {
+        carrello[i].quantita = carrello[i].quantita + 1;
+        prodottoTrovato = true;
+        break;
+      }
+    }
+
+    // Se non è stato trovato, aggiungilo
+    if (!prodottoTrovato) {
+      const nuovoProdotto = {
+        id: prodotto.id,
+        nome: prodotto.nome,
+        prezzo: prodotto.prezzo,
+        categoria: prodotto.categoria,
+        immagine: prodotto.immagine,
+        materiale: prodotto.materiale,
+        dimensioni: prodotto.dimensioni,
+        peso: prodotto.peso,
+        disponibilita: prodotto.disponibilita,
+        quantita: 1
+      };
+      carrello.push(nuovoProdotto);
+    }
+
+    // Salva il carrello aggiornato
     localStorage.setItem("carrello", JSON.stringify(carrello));
 
-    setMessaggio(`✅ ${prodotto.nome} aggiunto al carrello!`);
+    // Mostra messaggio di conferma
+    setMessaggio("✅ " + prodotto.nome + " aggiunto al carrello!");
     setTimeout(() => setMessaggio(""), 3000);
   };
 
+  // Restituisce l'emoji in base alla categoria
   const getEmojiCategoria = (categoria) => {
-    switch (categoria) {
-      case "Pallet":
-        return "📦";
-      case "Accessori pallet":
-        return "🔧";
-      case "Protezione merci":
-        return "🛡️";
-      case "Espositori":
-        return "🏪";
-      default:
-        return "📦";
+    if (categoria === "Pallet") {
+      return "📦";
+    } else if (categoria === "Accessori pallet") {
+      return "🔧";
+    } else if (categoria === "Protezione merci") {
+      return "🛡️";
+    } else if (categoria === "Espositori") {
+      return "🏪";
+    } else {
+      return "📦";
     }
   };
 
@@ -79,11 +106,11 @@ const Prodotti = () => {
             
             <div className="prodotto-dettagli">
               <p><strong>Materiale:</strong> {prodotto.materiale}</p>
-              <p><strong>Dimensioni:</strong> {prodotto.dimensioni_cm} cm</p>
-              <p><strong>Peso:</strong> {prodotto.peso_kg} kg</p>
+              <p><strong>Dimensioni:</strong> {prodotto.dimensioni}</p>
+              <p><strong>Peso:</strong> {prodotto.peso} kg</p>
               <p className={prodotto.disponibilita > 50 ? "disponibilita" : "disponibilita-bassa"}>
                 {prodotto.disponibilita > 0 
-                  ? `✅ ${prodotto.disponibilita} disponibili` 
+                  ? "✅ " + prodotto.disponibilita + " disponibili"
                   : "❌ Non disponibile"}
               </p>
             </div>

@@ -4,27 +4,53 @@ import './Ordini.css';
 const Ordini = () => {
   const [ordini, setOrdini] = useState([]);
 
+  // Carica gli ordini quando la pagina si apre
   useEffect(() => {
     const ordiniSalvati = localStorage.getItem("ordini");
     if (ordiniSalvati) {
       const ordiniArray = JSON.parse(ordiniSalvati);
-      setOrdini(ordiniArray.reverse());
+      
+      // Inverte l'ordine (dal più recente al più vecchio)
+      const ordiniInvertiti = [];
+      for (let i = ordiniArray.length - 1; i >= 0; i--) {
+        ordiniInvertiti.push(ordiniArray[i]);
+      }
+      
+      setOrdini(ordiniInvertiti);
     }
   }, []);
 
+  // Restituisce l'emoji in base alla categoria
   const getEmojiCategoria = (categoria) => {
-    switch (categoria) {
-      case "Pallet":
-        return "📦";
-      case "Accessori pallet":
-        return "🔧";
-      case "Protezione merci":
-        return "🛡️";
-      case "Espositori":
-        return "🏪";
-      default:
-        return "📦";
+    if (categoria === "Pallet") {
+      return "📦";
+    } else if (categoria === "Accessori pallet") {
+      return "🔧";
+    } else if (categoria === "Protezione merci") {
+      return "🛡️";
+    } else if (categoria === "Espositori") {
+      return "🏪";
+    } else {
+      return "📦";
     }
+  };
+
+  // Calcola il numero totale di articoli in un ordine
+  const calcolaNumeroArticoli = (prodotti) => {
+    let totale = 0;
+    for (let i = 0; i < prodotti.length; i++) {
+      totale = totale + prodotti[i].quantita;
+    }
+    return totale;
+  };
+
+  // Calcola il peso totale di un ordine
+  const calcolaPesoTotale = (prodotti) => {
+    let pesoTotale = 0;
+    for (let i = 0; i < prodotti.length; i++) {
+      pesoTotale = pesoTotale + (prodotti[i].peso * prodotti[i].quantita);
+    }
+    return pesoTotale;
   };
 
   return (
@@ -45,7 +71,7 @@ const Ordini = () => {
                   <p className="ordine-data">📅 {ordine.data}</p>
                 </div>
                 <div className="ordine-badge">
-                  {ordine.prodotti.reduce((tot, p) => tot + p.quantita, 0)} articoli
+                  {calcolaNumeroArticoli(ordine.prodotti)} articoli
                 </div>
               </div>
 
@@ -78,7 +104,7 @@ const Ordini = () => {
                         <strong> € {(prodotto.prezzo * prodotto.quantita).toFixed(2)}</strong>
                       </p>
                       <p className="prodotto-specifiche">
-                        {prodotto.materiale} • {prodotto.dimensioni_cm} cm • {prodotto.peso_kg} kg
+                        {prodotto.materiale} • {prodotto.dimensioni} • {prodotto.peso} kg
                       </p>
                     </div>
                   </div>
@@ -87,7 +113,7 @@ const Ordini = () => {
 
               <div className="ordine-riepilogo">
                 <div className="ordine-info">
-                  <p>Peso totale: <strong>{ordine.prodotti.reduce((tot, p) => tot + (p.peso_kg * p.quantita), 0)} kg</strong></p>
+                  <p>Peso totale: <strong>{calcolaPesoTotale(ordine.prodotti)} kg</strong></p>
                 </div>
                 <div className="ordine-totale">
                   <span>Totale:</span>
