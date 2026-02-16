@@ -9,7 +9,7 @@ const Prodotti = () => {
 
   // Carica i prodotti dal JSON quando la pagina si apre
   useEffect(() => {
-    setProdotti(catalogoData.prodotti);
+    setProdotti(catalogoData.catalogo.prodotti);
   }, []);
 
   // Aggiunge un prodotto al carrello
@@ -40,8 +40,8 @@ const Prodotti = () => {
         categoria: prodotto.categoria,
         immagine: prodotto.immagine,
         materiale: prodotto.materiale,
-        dimensioni: prodotto.dimensioni,
-        peso: prodotto.peso,
+        dimensioni_cm: prodotto.dimensioni_cm,
+        peso_kg: prodotto.peso_kg,
         disponibilita: prodotto.disponibilita,
         quantita: 1
       };
@@ -106,8 +106,8 @@ const Prodotti = () => {
             
             <div className="prodotto-dettagli">
               <p><strong>Materiale:</strong> {prodotto.materiale}</p>
-              <p><strong>Dimensioni:</strong> {prodotto.dimensioni}</p>
-              <p><strong>Peso:</strong> {prodotto.peso} kg</p>
+              <p><strong>Dimensioni:</strong> {prodotto.dimensioni_cm} cm</p>
+              <p><strong>Peso:</strong> {prodotto.peso_kg} kg</p>
               <p className={prodotto.disponibilita > 50 ? "disponibilita" : "disponibilita-bassa"}>
                 {prodotto.disponibilita > 0 
                   ? "✅ " + prodotto.disponibilita + " disponibili"
